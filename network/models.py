@@ -11,6 +11,9 @@ class Post(models.Model):
     body = models.TextField(max_length=600)
     date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
