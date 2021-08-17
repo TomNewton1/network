@@ -15,6 +15,11 @@ def apiOverview(request):
     """ Creates an api endpoint that lists all api endpoints"""
     api_urls = {
         'List': '/post-list',
+        'SubmitPost': '/post-submit',
+        'Individual User': '/auth/user',
+        'Register': '/auth/register',
+        'Login': '/auth/login',
+        'Logout': '/auth/logout',
     }
 
     return Response(api_urls)
@@ -27,9 +32,25 @@ def postList(request):
 
     return Response(serializer.data) # Returns all the posts as JSON 
 
+# Add New Post 
+@api_view(['POST'])
+def postSubmit(request):
+    """ Creates an api endpoint to submit a new post"""
+    serializer = PostSerializer(data=request.data)
+
+    print(serializer)
+
+    if serializer.is_valid():
+        serializer.save()
+    else:
+        print("Serializer was not valid")
+
+    return Response(serializer.data)
+
+
 
 
 # Show individual post? 
-# Add New Post 
+
 # Update/edit existing post
 # Delete post
