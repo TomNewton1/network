@@ -41,12 +41,12 @@ def postList(request):
 def postListFollowers(request, id):
     """ Creates an api endpoint that lists all existing posts based on who the user is following"""
 
-    user_followers = Follower.objects.filter(user_followed_id=id).values_list('user_following_id', flat=True).distinct()
+    users_followed = Follower.objects.filter(user_following_id=id).values_list('user_followed_id', flat=True).distinct()
 
-    all_follower_posts = Post.objects.filter(user_id__in=user_followers)
+    all_follower_posts = Post.objects.filter(user_id__in=users_followed)
 
     serializer = PostSerializer(all_follower_posts, many=True) # Serializes all the posts 
-
+    
     return Response(serializer.data) # Returns all the posts as JSON 
 
 # Add New Post 
