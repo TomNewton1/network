@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 from .serializers import PostSerializer
 
-from network.models import User, Post, Comment, Like, Follower
+from network.models import User, Post, Comment, Follower
 
 # Create your views here.
 
@@ -14,12 +14,17 @@ from network.models import User, Post, Comment, Like, Follower
 def apiOverview(request):
     """ Creates an api endpoint that lists all api endpoints"""
     api_urls = {
-        'List': '/post-list',
+        'List all Posts': '/post-list',
+        'Posts by followers': '/post-list-followers',
         'SubmitPost': '/post-submit',
+        'Like Post': '/post-like',
+
         'Individual User': '/auth/user',
         'Register': '/auth/register',
         'Login': '/auth/login',
         'Logout': '/auth/logout',
+        
+
     }
 
     return Response(api_urls)
@@ -30,6 +35,18 @@ def postList(request):
     posts = Post.objects.all()
     serializer = PostSerializer(posts, many=True) # Serializes all the posts 
 
+    return Response(serializer.data) # Returns all the posts as JSON
+
+@api_view(['GET'])
+def postListFollowers(request, id):
+    """ Creates an api endpoint that lists all existing posts based on who the user is following"""
+
+    user_followers = Follower.objects.filter(user_followed_id=id).values_list('user_following_id', flat=True).distinct()
+
+    all_follower_posts = Post.objects.filter(user_id__in=user_followers)
+
+    serializer = PostSerializer(all_follower_posts, many=True) # Serializes all the posts 
+
     return Response(serializer.data) # Returns all the posts as JSON 
 
 # Add New Post 
@@ -38,8 +55,6 @@ def postSubmit(request):
     """ Creates an api endpoint to submit a new post"""
     serializer = PostSerializer(data=request.data)
 
-    print(serializer)
-
     if serializer.is_valid():
         serializer.save()
     else:
@@ -47,6 +62,20 @@ def postSubmit(request):
 
     return Response(serializer.data)
 
+# Like Post
+@api_view(['PUT'])
+def postLike(request):
+    """ Creates an API endpoint to like a post """
+    serializer = PostSerializer(data=request.data)
+
+    print("The PUT serializer is:", serializer)
+
+    if serializer.is_valid():
+        serializer.save()
+    else:
+        print("Serializer was not valid")
+    
+    return Response(serializer.data)
 
 
 

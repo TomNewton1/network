@@ -10,6 +10,7 @@ class Post(models.Model):
     title = models.CharField(max_length=120)
     body = models.TextField(max_length=600)
     date = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(User, related_name='network_post', blank=True)
 
     def __str__(self):
         return self.title
@@ -20,10 +21,8 @@ class Comment(models.Model):
     body = models.TextField(max_length=220)
     date = models.DateTimeField(auto_now_add=True)
 
-class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now_add=True)
-
 class Follower(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following', null=True)
+    user_followed = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followed', null=True)
+    date = models.DateTimeField(auto_now_add=True, null=True)
+
