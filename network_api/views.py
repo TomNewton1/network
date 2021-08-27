@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import PostSerializer
+from .serializers import PostSerializer, LikePostSerializer
 
 from network.models import User, Post, Comment, Follower
 
@@ -66,12 +66,14 @@ def postSubmit(request):
 @api_view(['PUT'])
 def postLike(request):
     """ Creates an API endpoint to like a post """
-    serializer = PostSerializer(data=request.data)
+    serializer = LikePostSerializer(data=request.data)
 
     print("The PUT serializer is:", serializer)
 
     if serializer.is_valid():
-        serializer.save()
+        print("Serializeris valid")
+        
+
     else:
         print("Serializer was not valid")
     

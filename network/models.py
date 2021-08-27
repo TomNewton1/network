@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
+from multiselectfield import MultiSelectField
 
 class User(AbstractUser):
     pass
@@ -10,10 +10,23 @@ class Post(models.Model):
     title = models.CharField(max_length=120)
     body = models.TextField(max_length=600)
     date = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(User, related_name='network_post', blank=True)
 
     def __str__(self):
         return self.title
+
+class Vote(models.Model):
+
+    VOTE_CHOICE = (
+                    ('upvote', 'upvote'),
+                    ('downvote', 'downvote')
+                )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    type = MultiSelectField(choices=VOTE_CHOICE)
+
+    def __str__(self):
+        return f"{self.user} {self.type} {self.post}"
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
