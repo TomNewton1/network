@@ -6,5 +6,5 @@ urlpatterns = [
     path('post-list/', views.postList, name="api-postList"),
     path('post-list-followers/<int:id>', views.postListFollowers, name="api-postListFollowers"),
     path('post-submit/', views.postSubmit, name="api-postSubmit"),
-    path('post-like/', views.postLike, name="api-postLike")
+    path('post-vote/', views.postVote, name="api-postVote")
 ]
