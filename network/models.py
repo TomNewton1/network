@@ -14,6 +14,18 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def vote_count(self):
+        upvotes = Vote.objects.filter(type="upvote").count()
+        print(f"This post has {upvotes} upvotes")
+        downvotes = Vote.objects.filter(type="downvote").count()
+        print(f"This post has {downvotes} downvotes")
+        count = upvotes + downvotes
+        return count
+
+        
+
+    
 
 class Vote(models.Model):
 
