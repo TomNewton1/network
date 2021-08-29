@@ -67,7 +67,7 @@ def postSubmit(request):
 # Vote Post
 @api_view(['PUT'])
 def postVote(request):
-    """ Creates an API endpoint to like a post """
+    """ Creates an API endpoint to vote on a post """
     serializer = VoteSerializer(data=request.data)
 
     print("The PUT serializer is:", serializer)
@@ -75,9 +75,31 @@ def postVote(request):
     if serializer.is_valid():
         print("Serializeris valid")
 
+        # Check if user has already vpted on a post.
+
+        user_id = serializer.data['user']
+        post_id = serializer.data['post']
+        type = serializer.data['type']
+
+        if Vote.objects.filter(user_id=user_id, post_id=post_id).exists():
+            post = Vote.objects.get(user_id=user_id, post_id=post_id)
+            
+            # Check if new vote is the same as the old vote. Otherwise update. 
+            if str(post.type) != str(type):
+                post.type = str(type)
+                post.save()
+            
+            else:
+                print(f"You can't {type} more than once")
+
+        else:
+            # Add new vote to database
+            new_vote = Vote(user_id=user_id, post_id=post_id, type=type )
+            new_vote.save()
 
     else:
         print("Serializer was not valid")
+        print("Serializer errors", serializer.errors)
     
     return Response(serializer.data)
 
