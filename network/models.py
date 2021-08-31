@@ -8,6 +8,7 @@ class User(AbstractUser):
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=120)
+    username = models.CharField(max_length=120, null=True)
     body = models.TextField(max_length=600)
     date = models.DateTimeField(auto_now_add=True)
     votes = models.IntegerField(default=0, null=True)
@@ -22,6 +23,9 @@ class Post(models.Model):
         count = upvotes - downvotes
         self.votes = count
         self.save()
+    
+
+    
     
 
 class Vote(models.Model):

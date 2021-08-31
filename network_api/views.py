@@ -33,7 +33,7 @@ def apiOverview(request):
 @api_view(['GET'])
 def postList(request):
     """ Creates an api endpoint that lists all existing posts"""
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-id')
     serializer = PostSerializer(posts, many=True) # Serializes all the posts 
 
     return Response(serializer.data) # Returns all the posts as JSON
@@ -59,6 +59,7 @@ def postSubmit(request):
     print("New post serializer", serializer)
 
     if serializer.is_valid():
+        print("Serializer was valid")
         serializer.save()
     else:
         print("Serializer was not valid")
