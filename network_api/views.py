@@ -79,15 +79,11 @@ def postVote(request):
         # Check if user has already upvoted on a post.
 
         user_id = serializer.data['user']
-        print("user if is:", user_id)
         post_id = serializer.data['post']
-        print("post id is:", post_id)
         type = serializer.data['type']
 
         if Vote.objects.filter(user_id=user_id, post_id=post_id).exists():
             post = Vote.objects.get(user_id=user_id, post_id=post_id)
-
-            print("The vote id is: ", post.id)
             
             # Check if new vote is the same as the old vote. Otherwise update. 
             if str(post.type) != str(type):
@@ -96,18 +92,18 @@ def postVote(request):
             
             else:
                 print(f"You can't {type} more than once")
+                return Response(f"You can't {type} more than once")
 
         else:
             # Add new vote to database
             new_vote = Vote(user_id=user_id, post_id=post_id, type=type )
             new_vote.save()
     
-        # Update the post votes count
+        # Update the post votes count by calling the vote_count method
         post = Post.objects.get(id=post_id)
-        print("The post is:", post)
         vote_count = post.vote_count()
-        print("This post has a vote count of: ", vote_count)
-       
+
+        return Response(serializer.data) # Returns all the posts as JSON 
 
 
     else:

@@ -16,15 +16,12 @@ class Post(models.Model):
         return self.title
     
     def vote_count(self):
-        upvotes = Vote.objects.filter(type="upvote").count()
-        print(f"This post has {upvotes} upvotes")
-        downvotes = Vote.objects.filter(type="downvote").count()
-        print(f"This post has {downvotes} downvotes")
-        count = upvotes + downvotes
-        return count
-
-        
-
+        post_id = Post.objects.get(title=self.title).id
+        upvotes = Vote.objects.filter(post_id=post_id, type__contains="upvote").count()
+        downvotes = Vote.objects.filter(post_id=post_id, type__contains="downvote").count()
+        count = upvotes - downvotes
+        self.votes = count
+        self.save()
     
 
 class Vote(models.Model):
