@@ -17,6 +17,7 @@ def apiOverview(request):
     api_urls = {
         'List all Posts': '/post-list',
         'Posts by followers': '/post-list-followers',
+        'Posts by User': '/post-list-user',
         'SubmitPost': '/post-submit',
         'Like Post': '/post-like',
 
@@ -49,6 +50,15 @@ def postListFollowers(request, id):
     serializer = PostSerializer(all_follower_posts, many=True) # Serializes all the posts 
     
     return Response(serializer.data) # Returns all the posts as JSON 
+
+@api_view(['GET'])
+def postListUser(request, id):
+    """ Creates an api endpoint that lists all existing posts of specific user"""
+
+    posts = Post.objects.filter(user_id=id)
+    serializer = PostSerializer(posts, many=True) # Serializes all the posts 
+
+    return Response(serializer.data) # Returns all the posts as JSON
 
 # Add New Post 
 @api_view(['POST'])
