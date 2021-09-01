@@ -5,6 +5,7 @@ from multiselectfield import MultiSelectField
 class User(AbstractUser):
     pass
 
+
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=120)
@@ -23,9 +24,6 @@ class Post(models.Model):
         count = upvotes - downvotes
         self.votes = count
         self.save()
-    
-
-    
     
 
 class Vote(models.Model):

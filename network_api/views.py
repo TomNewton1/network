@@ -1,11 +1,14 @@
+import json
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models import Q
+from django.core.serializers.json import DjangoJSONEncoder
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import PostSerializer, VoteSerializer
+from .serializers import PostSerializer, VoteSerializer, datetimeSerializer
 
 from network.models import User, Post, Comment, Follower, Vote
 
@@ -53,12 +56,21 @@ def postListFollowers(request, id):
 
 @api_view(['GET'])
 def postListUser(request, id):
-    """ Creates an api endpoint that lists all existing posts of specific user"""
+    """ Creates an api endpoint that lists all existing posts of specific user and details of that user"""
 
     posts = Post.objects.filter(user_id=id)
-    serializer = PostSerializer(posts, many=True) # Serializes all the posts 
+    serializer = PostSerializer(posts, many=True) # Serializes all the posts
 
-    return Response(serializer.data) # Returns all the posts as JSON
+    user = User.objects.get(id=id)
+    username = user.username
+    date_joined = user.date_joined
+    date_joined = json.dumps(date_joined, cls=DjangoJSONEncoder)
+    print("Date joined is: ", date_joined)
+
+    followers = Follower.objects.filter(user_followed=id).count()
+    following = Follower.objects.filter(user_following=id).count()
+
+    return Response({'username': username, 'followers':followers, 'following':following, 'date':date_joined, 'posts':serializer.data}) # Returns all the posts as JSON
 
 # Add New Post 
 @api_view(['POST'])
