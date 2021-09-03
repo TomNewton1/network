@@ -162,7 +162,22 @@ def followUser(request, id, followed_id):
     elif request.method == 'POST':
         print("Post request received")
 
-        print(request.POST)
+        action = request.data['action']
+        print(action)
+
+        if action == "unfollow":
+            query = Follower.objects.get(user_following_id=id, user_followed_id=followed_id)
+            query.delete()
+            print(f"{followed_id} was unfollwed")
+
+        elif action == "follow":
+            new_follower = Follower(user_following_id=id, user_followed_id=followed_id)
+            new_follower.save()
+            print(f"{followed_id} was followed")
+
+            
+
+       
         
 
         """
