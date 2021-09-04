@@ -168,12 +168,14 @@ def followUser(request, id, followed_id):
         if action == "unfollow":
             query = Follower.objects.get(user_following_id=id, user_followed_id=followed_id)
             query.delete()
-            print(f"{followed_id} was unfollwed")
+            return Response("false")
+            print("no longer following user")
 
         elif action == "follow":
             new_follower = Follower(user_following_id=id, user_followed_id=followed_id)
             new_follower.save()
-            print(f"{followed_id} was followed")
+            return Response("true")
+            print("now following user")
 
             
 
