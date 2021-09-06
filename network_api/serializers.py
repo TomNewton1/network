@@ -8,6 +8,11 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = '__all__'
 
+class EditPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('id', 'title', 'body')
+
 class VoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vote

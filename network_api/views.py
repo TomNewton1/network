@@ -9,7 +9,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import PostSerializer, VoteSerializer, datetimeSerializer
+from .serializers import PostSerializer, VoteSerializer, datetimeSerializer, EditPostSerializer
 
 from network.models import User, Post, Comment, Follower, Vote
 
@@ -23,6 +23,7 @@ def apiOverview(request):
         'Posts by followers': '/post-list-followers',
         'Posts by User': '/post-list-user',
         'SubmitPost': '/post-submit',
+        'EditPost': '/post-edit',
         'Like Post': '/post-like',
 
         'Individual User': '/auth/user',
@@ -177,36 +178,36 @@ def followUser(request, id, followed_id):
             return Response("true")
             print("now following user")
 
-            
-
-       
-        
-
-        """
-
-        if (request.data.action) == "follow":
-            print("Follow user")
-        
-        elif (request.data.action) == "unfollow":
-            print("Unfollow user")
-
-        """
-
-
         return Response("updated or inserted follower")
 
 
-    
-    
-
-
-
-
-
-
-
-# Show individual post? 
-
 # Update/edit existing post
+@api_view(['PUT'])
+def postEdit(request, id):
+    """ Creates an api endpoint to update a new post"""
+    serializer = EditPostSerializer(data=request.data)
 
-# Delete post
+    if serializer.is_valid():
+        print("Serializeris valid")
+
+        # Check if user has already upvoted on a post.
+
+        title = serializer.data['title']
+        body = serializer.data['body']
+        print("title ", title)
+        print("body: ", body)
+
+        post = Post.objects.get(id=id)
+        print("old post is:", post)
+        post.title=title
+        post.body=body
+        print("new post is:", post)
+        post.save()
+        
+
+        return Response(serializer.data)
+    
+    else:
+        print("Serializer not valid")
+
+        return Response("Not able to update post")
