@@ -137,7 +137,7 @@ export function Navbar({ state, isAuthenticated }) {
 						<span>reddit</span>
 					</div>
 
-					<div className="searchBar">
+					<div onClick={handleRegister} className="searchBar">
 						<label htmlFor="searchBar">
 							<SearchIcon />
 						</label>

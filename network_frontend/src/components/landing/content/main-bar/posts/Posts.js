@@ -190,6 +190,8 @@ export function Posts() {
                     open={signInState.open}
                     action={signInState.signInType}
                     onClose={() => setsignInState({ open: false })}
+                    signInState={signInState} 
+					setsignInState={setsignInState}
                 ></LoginModal>
                 <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/>
             </Fragment>
@@ -208,7 +210,7 @@ export function Posts() {
                                 <div className="post-mainbar">
                                     <div className="post-author">
                                     <FcReddit size={22}/> 
-                                    Posted by&nbsp; <Link to={`/user/${post.user}`}>u/{post.username} </Link> &nbsp;on {moment(post.date).format('MMMM Do YYYY, h:mm a')}
+                                    Posted by&nbsp; <Link onClick={handleRegister} >u/{post.username} </Link> &nbsp;on {moment(post.date).format('MMMM Do YYYY, h:mm a')}
                                     </div>
                                     <div className="post-title">
                                         {post.title}
@@ -231,6 +233,8 @@ export function Posts() {
                         open={signInState.open}
                         action={signInState.signInType}
                         onClose={() => setsignInState({ open: false })}
+                        signInState={signInState} 
+					    setsignInState={setsignInState}
                     ></LoginModal>
                     <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/>
                 </Fragment>
