@@ -1,0 +1,9 @@
+Reducers
+
+Specify how the app's state changes in response to actions sent to the store. 
+(actions describe what happens but don't acutally describe how the applications state changes. Reducers are in charge of that. )
+
+
+A Reducer is a function that accepts state and action as arguments, and returns the next state of the application. 
+
+In is simplest form you can represent a reducer as (previousState, action) => newState

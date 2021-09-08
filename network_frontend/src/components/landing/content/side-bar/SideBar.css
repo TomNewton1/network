@@ -1,0 +1,66 @@
+.side-bar {
+    flex: 0.35;
+    margin-top: 15px;
+    margin-left: 25px;
+  }
+
+.might-like-container {
+  margin-top: 15px;
+  border: solid 1px #CCCCCC;
+  border-radius: 5px;
+  width: 320px;
+  height: 330px;
+  background-color: white;
+}
+
+.might-like-header {
+  background-image: linear-gradient(to bottom, #2386cf, #1d70ad, #185b8c, #13476d, #0f334f);
+  border-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  width: 320px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.might-like-title {
+  color: white;
+  font-weight: 600;
+  margin-top: auto;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.project-container{
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 0px 20px;
+  padding: 5px 0px 5px 0px;
+  width: 280px;
+}
+
+.project-container:hover{
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 0px 20px;
+  padding: 5px 0px 5px 0px;
+  width: 280px;
+  cursor: pointer;
+}
+
+
+
+.arrow-icon {
+  color:#46D160
+}
+
+.number, .arrow-icon, .project-icon, .project-title {
+  padding: 0 5px 0 5px;
+}
+
+.project-button {
+  padding-top: 10px;
+  text-align: center;
+}

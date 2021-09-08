@@ -1,0 +1,13 @@
+.post-container {
+    display: flex;
+    
+    border: 1px solid red;
+    background-color: white;
+    width: auto;
+}
+
+
+
+.create-post {
+    border: solid 1px green;
+}

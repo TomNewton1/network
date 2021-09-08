@@ -1,0 +1,96 @@
+.post-wrapper {
+  border: solid 1px #CCCCCC;
+  display: grid;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.post {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 6% auto;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.post-sidebar {
+  background-color: #F8F9FA;
+  text-align: center;
+  border-radius: 5px 0 0 5px;
+  padding-top: 10px;
+
+}
+.post-mainbar {
+  background-color: white;
+  display: grid;
+  padding-left: 5px;
+  border-radius: 5px;
+  margin: 10px 10px 10px 10px;
+}
+
+.post-title {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+.post-author {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.post-footer {
+  margin-top: 10px;
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+}
+
+.comment-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.comment-container:hover {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.comments {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(130, 130, 130)
+}
+
+.edit-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.edit-container:hover {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.edit {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(130, 130, 130)
+}
+
+

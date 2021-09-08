@@ -1,0 +1,54 @@
+.overlay-style{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 100;
+}
+
+.modal-style{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.modal-container{
+    margin: 155px 250px 155px 250px;
+    display: flex;
+}
+
+.exit-button{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.modal-side-bar{
+    background-color: #BFE4FC;
+    border-left: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 130px;
+}
+
+.modal-login{
+    width: 250px;
+    margin-left: 50px;
+}
+
+.modal-link{
+    color: #24A0ED;
+}
+
+.modal-link:hover{
+    cursor: pointer;
+}

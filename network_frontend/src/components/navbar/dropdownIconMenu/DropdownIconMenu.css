@@ -1,0 +1,32 @@
+.menu {
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    text-align: center;
+    border: 1px solid rgb(230, 230, 230);
+    border-top: none;
+    border-radius: var(--border-radius);
+    width: 100%;
+}
+
+.menu  button {
+    width: 100%;
+    border: none;
+    background-color: white;
+    padding: 8px 0 8px 10px ;
+}
+
+
+.drop-down-menu-button {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.menu  button:hover {
+    background-color: #0078D3;
+    color: white;
+}
+

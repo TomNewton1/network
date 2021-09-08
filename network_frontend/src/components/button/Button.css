@@ -1,0 +1,53 @@
+.btn {
+    padding: 5px 30px;
+    border: 1.5px solid var(--primary-color);
+    border-radius: 25px;
+    font-weight: 500;
+    min-width: 100px;
+}
+
+.btn:hover{
+
+    cursor: pointer;
+}
+
+/* Button Colors & Styles */
+
+.btn--primary{
+    background-color: var(--primary-color);
+    color: white;
+    
+}
+
+.btn--primary:hover{
+    background-color: rgb(125, 190, 255);
+    border-color: 1px solid rgb(125, 190, 255);
+
+}
+
+.btn--secondary {
+    color: var(--primary-color);
+    background-color: white;
+}
+
+.btn--secondary:hover {
+    color: var(--primary-color);
+    background-color: rgb(248,248,248)
+}
+
+/* Button Sizes */
+
+.btn--small {
+    padding: 7px 20px 7px 20px;
+    font-size: 14px;
+}
+
+.btn--medium {
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+.btn--large {
+    padding: 15px 30px;
+    font-size: 20px;
+}

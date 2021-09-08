@@ -1,0 +1,157 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    background-color: white;
+    min-width: 610px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-fa-icon{
+    color:#FF4500;
+    width: 32px;
+    height: 32px;
+    margin-right: 5px; 
+}
+
+
+.logo span {
+    font-size: 23px;
+    font-weight: 400;
+    font-family: 'Varela Round';
+}
+
+
+.actions {
+    display: flex;
+    align-items: center;
+    color: rgb(130, 130, 130);
+    gap: 7px;
+}
+
+.actions div:nth-child(2) {
+    margin: 0px 15px; 
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+}
+
+.profile:hover {
+    border: 1px solid rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+.logged-in-profile {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    border-radius: var(--border-radius);
+    padding: 0 10px 0 10px;
+}
+
+.logged-in-profile:hover {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(230, 230, 230);
+    border-bottom: none;
+    border-radius: var(--border-radius);
+    width: 200px;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+}
+
+.logged-in-profile-open {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(230, 230, 230);
+    border-bottom: none;
+    border-radius: var(--border-radius);
+    width: 200px;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+}
+
+
+
+.profile svg{
+    margin-right: 8px;
+    transform: scale(1.2);
+}
+
+.username {
+    overflow: auto;
+    width: 150px;
+}
+
+
+
+.searchBar {
+    position: relative;
+    margin: 0 0.5rem 0 0.5rem;
+    padding: 0 3rem 0 0;
+    width: 400px;
+}
+
+.searchBar input {
+    width: 100%;
+    min-width: 5rem;
+    display: inline-flex;
+    padding: 10px;
+    padding-left: 40px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgb(230, 230, 230);
+    background-color: rgb(245, 245, 245);
+}
+
+.searchBar input:hover {
+    border-color: var(--primary-color);
+    background-color: white;
+    
+}
+
+
+.searchBar label {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 15px;
+}
+
+.searchBar label svg {
+    color: rgb(130, 130, 130)
+}
+
+
+.dropdown-icon-menu {
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+    right: 7px;
+    width: 220px;
+    margin-right: 40px;
+}
+
+.logged-in-dropdown-icon-menu {
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+    right: 7px;
+    width: 220px;
+    margin-right: 40px;
+    border-radius: var(--border-radius);
+}
+
+.logged-in-arrow {
+    flex-grow: 1;
+}
