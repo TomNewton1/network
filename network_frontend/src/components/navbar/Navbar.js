@@ -39,13 +39,11 @@ export function Navbar({ state, isAuthenticated }) {
 	console.log(searchTerm)
 
 	useEffect(() => {
-		console.log("use effect being called")
 		dispatch(filterPosts(searchTerm))
 	},[searchTerm]);
 
 
 	// Check if click was inside dropdown menu
-
 	const onClickOutsideListener = () => {
 		setdropDownState({
 			showMenu: false,
@@ -54,16 +52,16 @@ export function Navbar({ state, isAuthenticated }) {
 	};
 
 	// Handle State for Modal (checks if user clicked on login or logout)
-
 	const [signInState, setsignInState] = useState({
 		open: false,
 		signInType: "",
 	});
 
-	// setSignInState to closed if the user is authenticated
-
+	// setSignInState to closed if the user is authenticated (close modal if authenticated)
 	useEffect(() => {
-		setsignInState({ open: false });
+		if(isAuthenticated) {
+			setsignInState({ open: false });
+		} 
 	}, [isAuthenticated]);
 
 	const handleLogin = () => {

@@ -8,14 +8,6 @@ import './LoginModal.css'
 import { CgClose } from 'react-icons/all'
 
 export default function LoginModal({ open, onClose, signInState, setsignInState}) {
-
-    // Check if user is Authenticated
-    const Authenticated = useSelector((state) => state.auth.isAuthenticated)
-
-    // setSignInState to closed if the user is authenticated
-	useEffect(() => {
-		
-	}, [Authenticated]);
     
     if (!open) return null
 

@@ -33,7 +33,7 @@ export class Login extends Component {
 
         const { username, password } = this.state;
 
-        if (this.state.isAuthenticated) {
+        if (this.props.isAuthenticated) {
             return <Redirect to="/homepage"/>
         }
 
