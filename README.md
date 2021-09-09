@@ -1,4 +1,4 @@
-# Network (Reddit clone)
+# Network
 
 
 [![](network.gif)](https://www.youtube.com/watch?v=FMiidDY_lcs&ab_channel=TomasNewton)
