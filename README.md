@@ -12,8 +12,9 @@ Network is reddit like social media site where users can make posts, follow user
 - Urls: 
 
 **Frontend (React):** 
-- Create React App
-- Redux 
+- Create React App: The frontend application is decoupled from the backend and built using Create React App. This sets up the development environement with the latests JS features and optimises the app for production. 
+
+- Redux: React Redux is used for managing and centralising application state. This lets your React componenets read data from a the Redux store, dispatch actions to the store and update state. In particular it is used within the application to store Authentication tokens and dispatch actions to carry out functionality such as: updating posts, liking posts, following users etc. 
 
 **Authentication:** 
 - Django-rest-knox token authentication. 
