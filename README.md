@@ -6,9 +6,12 @@
 Network is a reddit-like social media site where users can make posts, follow users and upvote/downvote posts. This project is made using the Django REST framework to build a RESTful API and React on the frontend to consume the API. 
 
 **Backend (Django REST framework):**
-- **RESTFUL API:** In a RESTful API, endpoints (URLs) define the structure of the API and how end users access data from our application using the HTTP methods: GET, POST, PUT, DELETE. 
-- **Model Serializer:** DRF’s Serializers convert model instances to Python dictionaries, which can then be rendered in various API appropriate formats - like JSON. 
-- **Views:** Views are protected by api_decorator checks which ensure the appropriate http request is passed into the view function. The view then receives the web request, performs some functionality (such as getting posts from the database), serializes the data to JSON and returns the web response. 
+- **RESTFUL API:** In a RESTful API, endpoints (URLs) define the structure of the API and how end users access data from our application using the HTTP methods: GET, POST, PUT, DELETE.
+
+- **Model Serializer:** DRF’s Serializers convert model instances to Python dictionaries, which can then be rendered in various API appropriate formats - like JSON.
+
+- **Views:** Views are protected by api_decorator checks which ensure the appropriate http request is passed into the view function. The view then receives the web request, performs some functionality (such as getting posts from the database), serializes the data to JSON and returns the web response.
+
 - **Urls:** API urls are the endpoints to which you can send HTTP requests. These are hidden from the user, but allow you to access your API to carry out tasks such as getting user posts, liking posts, following users etc. 
 
 **Frontend (React):** 
